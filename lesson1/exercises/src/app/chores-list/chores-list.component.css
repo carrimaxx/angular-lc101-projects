@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap");
+
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans', sans-serif; */
+
+h3 {
+  color: #6c5b7b;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+li {
+  color: #f67280;
+  font-size: 1.25rem;
+  font-style: italic;
+}
