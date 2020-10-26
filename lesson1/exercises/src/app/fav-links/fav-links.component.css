@@ -1,0 +1,19 @@
+div {
+  /* margin: 1% auto; */
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  margin-top: 5%;
+  text-align: center;
+}
+
+a {
+  margin: 1% auto;
+}
+
+img {
+  width: 50%;
+  margin: 3% auto;
+}
