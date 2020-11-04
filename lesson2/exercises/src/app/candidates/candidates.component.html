@@ -1,5 +1,12 @@
 <div class="container">
-  <h2 class="centered">Mission Name: {{ missionName }}</h2>
+  <!-- <h2 class="centered">Mission Name: {{ missionName }}</h2> -->
+  <h2
+    class="centered"
+    *ngIf="!editMissionName; else editMission"
+    (click)="editMissionName = true"
+  >
+    Mission Name: {{ missionName }}
+  </h2>
   <br />
   <div class="row justify-content-center">
     <div class="candidates col-3">
@@ -24,21 +31,30 @@
     <div class="centered col-3">
       <h2>Sidekick</h2>
       <!-- Use *ngIf and the correct placeholder to display a sidekick's image -->
-      <img src="{{ placeholder }}" alt="OOPS! No image available." />
+      <img *ngIf="selected" src="{{ selected.image }}" alt="sidekick image" />
     </div>
 
     <div class="crew col-3">
       <h2>Selected Crew</h2>
       <ul>
-        <li>Use *ngFor to list the selected crew.</li>
+        <li *ngFor="let crewName of crew">
+          {{ crewName.name }}
+        </li>
       </ul>
-      <!-- Add a "Clear Crew List" button here. -->
+      <button *ngIf="crew.length > 0" (click)="crew = []">
+        Clear Crew List
+      </button>
     </div>
   </div>
   <hr />
   <div class="centered">
     <button (click)="selected = false">Clear Data & Image</button>
-    <!-- Add a "Send on Mission" button here. -->
+    <button
+      (click)="addToCrew(selected)"
+      *ngIf="selected && !crew.includes(selected) && crew.length < 3"
+    >
+      Send on Mission
+    </button>
   </div>
 </div>
 
@@ -46,7 +62,10 @@
 <ng-template #editMission>
   <h2 class="centered">
     Mission Name:
-    <!-- Add a keyup.enter event that calls the changeMissionName function. -->
-    <input #newName type="text" />
+    <input
+      #newName
+      (keyup.enter)="editMissionName = changeMissionName(newName.value)"
+      type="text"
+    />
   </h2>
 </ng-template>
